@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.desafiopicpay.R
 import com.example.desafiopicpay.databinding.FragmentUsersBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -28,7 +29,7 @@ class UsersFragment : Fragment() {
 //        ViewModelProvider(this).get(UsersViewModel::class.java)
 //    }
 
-    private val adapter: UsersAdapter = UsersAdapter()
+    private val adapter: UsersAdapter = UsersAdapter { username, img -> mudaTela(username, img) }
     private lateinit var binding: FragmentUsersBinding
 
     override fun onCreateView(
@@ -59,6 +60,12 @@ class UsersFragment : Fragment() {
             adapter.setUsuarios(it)
         })
 
+    }
+
+    fun mudaTela(username: String, img: String){
+        println("TESTANDO: $username")
+        println("TESTANDO2: $img")
+        findNavController().navigate(R.id.action_usersFragment_to_paymentFragment)
     }
 
 
