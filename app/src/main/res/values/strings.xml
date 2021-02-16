@@ -3,4 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragmentttt</string>
     <string name="search_text">A quem você deseja pagar?</string>
+    <string name="cadastre_um_cart_o_de_cr_dito">Cadastre um cartão de crédito</string>
+    <string name="card_text_description">
+        Para fazer pagamentos para outras pessoas você precisa cadastrar um cartão de crédito pessoal.
+    </string>
+    <string name="cadastrar_cart_o">Cadastrar Cartão</string>
 </resources>
