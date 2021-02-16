@@ -50,6 +50,7 @@
             android:background="@drawable/buttonshape"
             android:layout_marginHorizontal="10dp"
             android:backgroundTint="#11C76F"
+            android:layout_marginTop="30dp"
             />
 
 

@@ -8,4 +8,8 @@
         Para fazer pagamentos para outras pessoas você precisa cadastrar um cartão de crédito pessoal.
     </string>
     <string name="cadastrar_cart_o">Cadastrar Cartão</string>
+    <string name="cadastrar_cartao">Cadastrar Cartão</string>
+    <string name="numero_cartao">Número do cartão</string>
+    <string name="nome_do_titular">Nome do titular</string>
+    <string name="vencimento">Vencimento</string>
 </resources>

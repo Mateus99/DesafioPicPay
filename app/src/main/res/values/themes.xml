@@ -28,4 +28,15 @@
         <item name="android:layout_marginLeft">20dp</item>
     </style>
 
+
+    <style name="EditTextCardRegister" parent="TextAppearance.AppCompat">
+
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">#60FFFFFF</item>
+        <item name="android:backgroundTint">#60FFFFFF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+
+    </style>
 </resources>

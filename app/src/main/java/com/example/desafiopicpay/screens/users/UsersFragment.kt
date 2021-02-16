@@ -63,7 +63,9 @@ class UsersFragment : Fragment() {
     }
 
     fun mudaTela(username: String, img: String){
-        findNavController().navigate(UsersFragmentDirections.actionUsersFragmentToPaymentFragment(username, img))
+        //Aqui vou ter q fazer uma verificação se já existe algum cartão cadastrado
+        findNavController().navigate(UsersFragmentDirections.actionUsersFragmentToCardFragment())
+        //findNavController().navigate(UsersFragmentDirections.actionUsersFragmentToPaymentFragment(username, img))
     }
 
 
