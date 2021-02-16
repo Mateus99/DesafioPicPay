@@ -40,7 +40,7 @@ class UsersAdapter(val adapterOnClick: (username: String, img: String) -> Unit) 
 
         holder.binding.root.setOnClickListener{
             val nameText = holder.binding.usernameTextView.text
-            val img = holder.binding.userProfileImg
+            val img = holder.binding.profileImg
 
             adapterOnClick(nameText.toString(), img.toString())
         }

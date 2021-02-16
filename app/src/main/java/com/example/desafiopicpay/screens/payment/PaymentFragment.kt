@@ -22,6 +22,12 @@ class PaymentFragment : Fragment() {
 
         binding = FragmentPaymentBinding.inflate(inflater, container, false)
 
+        val args = PaymentFragmentArgs.fromBundle(requireArguments())
+
+        binding.imgUrl = args.userImg
+
+        binding.usernameTxt.text = args.username
+
         return binding.root
     }
 

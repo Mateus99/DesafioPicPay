@@ -9,6 +9,11 @@
             name="viewModel"
             type="com.example.desafiopicpay.screens.payment.PaymentViewModel" />
 
+        <variable
+            name="imgUrl"
+            type="String" />
+
+
     </data>
 
 
@@ -16,19 +21,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:background="#1D1E20">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/circle_card_view"
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:cardCornerRadius="50dp"
-            android:layout_margin="20dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp">
 
             <ImageView
                 android:id="@+id/user_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                imageUrl="@{imgUrl}"
                 android:scaleType="centerCrop"/>
 
         </androidx.cardview.widget.CardView>
@@ -37,10 +45,12 @@
             android:id="@+id/username_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="50dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -48,6 +58,8 @@
                 android:id="@+id/coin_symbol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"
                 android:text="R$"/>
 
             <EditText
@@ -55,10 +67,54 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:hint="0,00"
+                android:textColor="#11C76F"
+                android:textSize="54dp"
+                android:textColorHint="@color/white"
+                android:layout_marginStart="10dp"
+                android:background="@android:color/transparent"/>
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="29dp">
+
+            <TextView
+                android:id="@+id/card_flag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mastercard 1234"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/edit_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDITAR"
+                android:drawableLeft="@drawable/edit_dot"
+                android:drawablePadding="5dp"
+                android:textColor="#11C76F"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pay_btn"
+            android:text="Pagar"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="#11C76F"
+            />
 
     </LinearLayout>
 

@@ -63,9 +63,7 @@ class UsersFragment : Fragment() {
     }
 
     fun mudaTela(username: String, img: String){
-        println("TESTANDO: $username")
-        println("TESTANDO2: $img")
-        findNavController().navigate(R.id.action_usersFragment_to_paymentFragment)
+        findNavController().navigate(UsersFragmentDirections.actionUsersFragmentToPaymentFragment(username, img))
     }
 
 
