@@ -24,6 +24,9 @@
         <argument
             android:name="userImg"
             app:argType="string" />
+        <action
+            android:id="@+id/action_paymentFragment_to_cardRegisterFragment"
+            app:destination="@id/cardRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardFragment"
@@ -32,9 +35,25 @@
         <action
             android:id="@+id/action_cardFragment_to_cardRegisterFragment"
             app:destination="@id/cardRegisterFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="userImg"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/cardRegisterFragment"
         android:name="com.example.desafiopicpay.screens.card.CardRegisterFragment"
-        android:label="CardRegisterFragment" />
+        android:label="CardRegisterFragment" >
+        <action
+            android:id="@+id/action_cardRegisterFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="userImg"
+            app:argType="string" />
+    </fragment>
 </navigation>

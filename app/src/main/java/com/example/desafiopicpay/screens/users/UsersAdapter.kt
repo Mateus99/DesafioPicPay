@@ -2,11 +2,11 @@ package com.example.desafiopicpay.screens.users
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafiopicpay.databinding.ListItemBinding
 
-class UsersAdapter(val adapterOnClick: (username: String, img: String) -> Unit) : RecyclerView.Adapter<UserViewHolder>() {
+class UsersAdapter(val adapterOnClick: (username: String, img: String) -> Unit) :
+    RecyclerView.Adapter<UserViewHolder>() {
 
     var users: MutableList<User> = mutableListOf()
 
@@ -38,7 +38,7 @@ class UsersAdapter(val adapterOnClick: (username: String, img: String) -> Unit) 
 
         holder.bind(users[position])
 
-        holder.binding.root.setOnClickListener{
+        holder.binding.root.setOnClickListener {
             val nameText = holder.binding.usernameTextView.text
             val img = holder.binding.profileImg
 

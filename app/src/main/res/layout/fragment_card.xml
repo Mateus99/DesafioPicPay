@@ -42,7 +42,7 @@
 
         <Button
             android:id="@+id/register_card_btn"
-            android:text="@string/cadastrar_cart_o"
+            android:text="@string/cadastrar_cartao"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:layout_width="match_parent"

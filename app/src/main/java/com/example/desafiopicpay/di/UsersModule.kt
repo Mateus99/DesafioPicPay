@@ -14,8 +14,8 @@ val usersModule = module {
         //Toda vez que alquem precisar do UsersViewModel, automaticamente
         //o Koin vai vir aqui no módulo e instanciar pra quem estiver precisando
         UsersViewModel(
-                navController = navController,
-                repository = UsersRepository()
+            navController = navController,
+            repository = UsersRepository()
         )
     }
 

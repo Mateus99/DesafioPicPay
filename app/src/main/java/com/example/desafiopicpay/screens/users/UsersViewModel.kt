@@ -7,7 +7,8 @@ import androidx.navigation.NavController
 import com.example.desafiopicpay.repository.UsersRepository
 import kotlinx.coroutines.launch
 
-class UsersViewModel(private val navController: NavController, val repository: UsersRepository) : ViewModel() {
+class UsersViewModel(private val navController: NavController, val repository: UsersRepository) :
+    ViewModel() {
 
     val properties: LiveData<MutableList<User>>
 
