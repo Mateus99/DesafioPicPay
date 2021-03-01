@@ -4,18 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.desafiopicpay.databinding.FragmentPaymentBinding
+import com.example.desafiopicpay.screens.users.UsersViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 
 class PaymentFragment : Fragment() {
 
 
-    private val viewModel: PaymentViewModel by lazy {
-        ViewModelProvider(this).get(PaymentViewModel::class.java)
-    }
+    private val viewModel: PaymentViewModel by viewModel()
 
     private lateinit var binding: FragmentPaymentBinding
 
@@ -41,12 +45,25 @@ class PaymentFragment : Fragment() {
             )
         }
 
-        binding.payBtn.setOnClickListener {
-            viewModel.makePayment()
-        }
+        //Ver direito pq retrofit não ta funcionando
+//        binding.payBtn.setOnClickListener {
+//            viewModel.makePayment()
+//        }
 
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //muito importante, ta passando os dados do properties para o adapter
+
+
+//        viewModel.transaction.observe(viewLifecycleOwner, Observer {
+//            Toast.makeText(requireContext(), "DEU CERTO", Toast.LENGTH_SHORT).show()
+//        })
+
     }
 
 

@@ -1,24 +1,37 @@
 package com.example.desafiopicpay.screens.payment
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.desafiopicpay.screens.network.RestApiService
+import androidx.lifecycle.viewModelScope
+import com.example.desafiopicpay.repository.UsersRepository
+import kotlinx.coroutines.launch
 
 
-class PaymentViewModel : ViewModel() {
+class PaymentViewModel(val repository: UsersRepository) : ViewModel() {
 
-
-    fun makePayment() {
-        val apiService = RestApiService()
-        val paymentInfo = Payment(
-            cardNumber = "1111111111111111",
-            cvv = 789,
-            value = 79.9,
-            expireDate = "01/18",
-            userIdDestination = 1002
-        )
-
-        apiService.makePayment(paymentInfo) {}
-
-    }
+//    val transaction = MutableLiveData<Transaction>()
+//
+//    fun makePayment() {
+//
+//        val paymentInfo = Payment(
+//            cardNumber = "1111111111111111",
+//            cvv = 789,
+//            value = 79.9,
+//            expireDate = "01/18",
+//            userIdDestination = 1002
+//        )
+//
+//        viewModelScope.launch {
+//            val transactionPayment = repository.makePayment(paymentInfo)
+//
+//            transactionPayment?.let {
+//                transaction.value = it
+//            }
+//
+//        }
+//
+//
+//
+//    }
 
 }

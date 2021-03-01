@@ -1,6 +1,7 @@
 package com.example.desafiopicpay.screens.network
 
 import com.example.desafiopicpay.screens.payment.Payment
+import com.example.desafiopicpay.screens.payment.Transaction
 import com.example.desafiopicpay.screens.users.User
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -36,7 +37,7 @@ interface PicPayService {
 
     @Headers("Content-Type: application/json")
     @POST("paymentRequest")
-    fun makePayment(@Body paymentData: Payment): Call<Payment>
+    fun makePayment(@Body paymentData: Payment): Call<Transaction>
 
 }
 
@@ -44,39 +45,5 @@ interface PicPayService {
 object PicPayApi {
     val retrofitService: PicPayService by lazy {
         retrofit.create(PicPayService::class.java)
-    }
-}
-
-//Criado para o POST, mas preciso ver como integrar com o Builder antigo do GET
-object ServiceBuilder {
-    private val client = OkHttpClient.Builder().build()
-
-    private val retrofit2 = Retrofit.Builder()
-        .baseUrl("https://careers.picpay.com/tests/mobdev/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(client)
-        .build()
-
-    fun <T> buildService(service: Class<T>): T {
-        return retrofit2.create(service)
-    }
-}
-
-class RestApiService {
-    fun makePayment(paymentData: Payment, onResult: (Payment?) -> Unit) {
-        val retrofit2 = ServiceBuilder.buildService(PicPayService::class.java)
-        retrofit2.makePayment(paymentData).enqueue(
-            object : Callback<Payment> {
-                override fun onFailure(call: Call<Payment>, t: Throwable) {
-                    onResult(null)
-                }
-
-                override fun onResponse(call: Call<Payment>, response: Response<Payment>) {
-                    val paymentDone = response.body()
-                    println("DEU CERTO: $paymentDone")
-                    onResult(paymentDone)
-                }
-            }
-        )
     }
 }

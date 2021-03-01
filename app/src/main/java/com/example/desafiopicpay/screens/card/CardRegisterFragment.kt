@@ -6,19 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.desafiopicpay.databinding.FragmentCardRegisterBinding
 import com.example.desafiopicpay.screens.payment.PaymentFragmentArgs
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CardRegisterFragment : Fragment() {
 
+    private val viewModel: CardRegisterViewModel by viewModel()
 
     private lateinit var binding: FragmentCardRegisterBinding
-
-    private val viewModel: CardRegisterViewModel by lazy {
-        ViewModelProvider(this).get(CardRegisterViewModel::class.java)
-    }
 
 
     override fun onCreateView(
@@ -31,66 +30,37 @@ class CardRegisterFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        viewModel.loadData(
-            requireActivity(),
-            binding.cardNumber,
-            binding.cardName,
-            binding.expireDate,
-            binding.cvv
-        )
+        val (cardNumber, cardName, expireDate, cvv) = viewModel.loadData(requireActivity())
 
-        viewModel.checkEdits(
-            binding.cardNumber.text.toString(),
-            binding.cardName.text.toString(),
-            binding.expireDate.text.toString(),
-            binding.cvv.text.toString(),
-            binding.finishRegister
-        )
+        binding.cardNumber.setText(cardNumber)
+        binding.cardName.setText(cardName)
+        binding.expireDate.setText(expireDate)
+        binding.cvv.setText(cvv)
+
+        fillEditTexts()
+
         binding.cardNumber.addTextChangedListener {
-            viewModel.checkEdits(
-                binding.cardNumber.text.toString(),
-                binding.cardName.text.toString(),
-                binding.expireDate.text.toString(),
-                binding.cvv.text.toString(),
-                binding.finishRegister
-            )
+            viewModel.cardNumber = binding.cardNumber.text.toString()
+            viewModel.verifyData()
         }
+
         binding.cardName.addTextChangedListener {
-            viewModel.checkEdits(
-                binding.cardNumber.text.toString(),
-                binding.cardName.text.toString(),
-                binding.expireDate.text.toString(),
-                binding.cvv.text.toString(),
-                binding.finishRegister
-            )
+            viewModel.cardName = binding.cardName.text.toString()
+            viewModel.verifyData()
         }
+
         binding.expireDate.addTextChangedListener {
-            viewModel.checkEdits(
-                binding.cardNumber.text.toString(),
-                binding.cardName.text.toString(),
-                binding.expireDate.text.toString(),
-                binding.cvv.text.toString(),
-                binding.finishRegister
-            )
+            viewModel.expireDate = binding.expireDate.text.toString()
+            viewModel.verifyData()
         }
+
         binding.cvv.addTextChangedListener {
-            viewModel.checkEdits(
-                binding.cardNumber.text.toString(),
-                binding.cardName.text.toString(),
-                binding.expireDate.text.toString(),
-                binding.cvv.text.toString(),
-                binding.finishRegister
-            )
+            viewModel.cvv = binding.cvv.text.toString()
+            viewModel.verifyData()
         }
 
         binding.finishRegister.setOnClickListener {
-            viewModel.saveData(
-                requireActivity(),
-                binding.cardNumber.text.toString(),
-                binding.cardName.text.toString(),
-                binding.expireDate.text.toString(),
-                binding.cvv.text.toString()
-            )
+            viewModel.saveData(requireActivity())
 
             findNavController().navigate(
                 CardRegisterFragmentDirections.actionCardRegisterFragmentToPaymentFragment(
@@ -100,7 +70,31 @@ class CardRegisterFragment : Fragment() {
             )
         }
 
+
+
         return binding.root
+    }
+
+    fun fillEditTexts(){
+        viewModel.cardNumber = binding.cardNumber.text.toString()
+        viewModel.cardName = binding.cardName.text.toString()
+        viewModel.expireDate = binding.expireDate.text.toString()
+        viewModel.cvv = binding.cvv.text.toString()
+        viewModel.verifyData()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.btnVisibility.observe(viewLifecycleOwner, Observer {
+            if (viewModel.btnVisibility.value == true){
+                binding.finishRegister.visibility = View.VISIBLE
+            } else{
+                binding.finishRegister.visibility = View.GONE
+            }
+
+        })
+
     }
 
 }

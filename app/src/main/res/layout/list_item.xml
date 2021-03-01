@@ -15,12 +15,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
-<!--        <ImageView-->
-<!--            android:id="@+id/user_profile_img"-->
-<!--            android:layout_width="80dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            app:imageUrl="@{profile_img}" />-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"

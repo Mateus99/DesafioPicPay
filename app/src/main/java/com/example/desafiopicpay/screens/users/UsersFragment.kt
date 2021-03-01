@@ -22,9 +22,7 @@ class UsersFragment : Fragment() {
 
     //Essa linha faz referencia ao viewModel do Koin
     //Com ela nós substituimos a declaração utilizando o ViewModelProvider comentada abaixo dela
-    private val viewModel: UsersViewModel by viewModel {
-        parametersOf(findNavController())
-    }
+    private val viewModel: UsersViewModel by viewModel()
 
 //    private val viewModel: UsersViewModel by lazy {
 //        ViewModelProvider(this).get(UsersViewModel::class.java)
